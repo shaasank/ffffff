@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useMemo } from 'react';
 
-export function CandlestickChart() {
+export function CandlestickChart({ isHovered = false }: { isHovered?: boolean }) {
     // Generate a simulated price path (bullish trend: low to high profit)
     const candles = useMemo(() => {
         let lastClose = 550; // Start lower on the screen (High Y)
@@ -21,7 +21,7 @@ export function CandlestickChart() {
     }, []);
 
     return (
-        <div className="absolute -right-10 md:-right-20 top-1/2 -translate-y-1/2 w-[350px] md:w-[900px] h-[400px] md:h-[700px] pointer-events-none opacity-20 filter blur-[3px] sm:blur-[5px] z-10 overflow-hidden">
+        <div className={`absolute -right-10 md:-right-20 top-1/2 -translate-y-1/2 w-[350px] md:w-[900px] h-[400px] md:h-[700px] pointer-events-none opacity-20 filter transition-all duration-700 ${isHovered ? 'blur-none' : 'blur-[3px] sm:blur-[5px]'} z-10 overflow-hidden`}>
             <svg viewBox="0 0 900 700" className="w-full h-full preserve-aspect-ratio" preserveAspectRatio="xMidYMid slice">
                 {candles.map((candle, i) => (
                     <g key={i} transform={`translate(${candle.x}, 0)`}>

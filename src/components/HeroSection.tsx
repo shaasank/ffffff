@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, animate, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -57,6 +57,11 @@ function RotatingSlogan() {
 
 
 export function HeroSection() {
+    const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+    const handleLogoEnter = useCallback(() => setIsLogoHovered(true), []);
+    const handleLogoLeave = useCallback(() => setIsLogoHovered(false), []);
+
     return (
         <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-12 overflow-hidden bg-black">
             {/* Background Gradient */}
@@ -89,7 +94,7 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
             >
-                <CandlestickChart />
+                <CandlestickChart isHovered={isLogoHovered} />
             </motion.div>
 
             <div className="container relative z-30 mx-auto px-6 text-center flex-grow flex flex-col items-center justify-center pt-10">
@@ -111,6 +116,8 @@ export function HeroSection() {
                             delay: 0.2
                         }}
                         className="mb-8 relative group z-35"
+                        onMouseEnter={handleLogoEnter}
+                        onMouseLeave={handleLogoLeave}
                     >
                         {/* High Contrast Glow Layers */}
                         <div className="absolute inset-0 bg-purple-500/600 blur-[1500px] rounded-full transition-all duration-1000 group-hover:bg-purple-500/80 z-0" />
