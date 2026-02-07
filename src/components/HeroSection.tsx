@@ -113,8 +113,8 @@ export function HeroSection() {
                         className="mb-8 relative group z-35"
                     >
                         {/* High Contrast Glow Layers */}
-                        <div className="absolute inset-0 bg-purple-500/40 blur-[120px] rounded-full transition-all duration-1000 group-hover:bg-purple-500/50 z-0" />
-                        <div className="absolute inset-0 bg-white/5 blur-[40px] rounded-full z-0" />
+                        <div className="absolute inset-0 bg-purple-500/600 blur-[1500px] rounded-full transition-all duration-1000 group-hover:bg-purple-500/80 z-0" />
+                        <div className="absolute inset-0 bg-white8 blur-[90px] rounded-full z-0" />
 
                         <div
                             className="relative w-[300px] sm:w-[800px] lg:w-[1600px] h-[120px] sm:h-[280px] lg:h-[450px] bg-white transition-all duration-500"
